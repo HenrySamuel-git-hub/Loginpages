@@ -92,6 +92,10 @@
             const btns=document.getElementById("btn")
             btns.addEventListener("click",(x=>{
                 x.preventDefault()
+             let issure=confirm("are you sure you want to log out?")
+                if(issure){
+                window.location.href="login.html"
+                }
                 window.location.href="login.html"
             }))
             data=[
