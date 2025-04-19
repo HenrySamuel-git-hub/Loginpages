@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./style.css" rel="stylesheet">
+    </head>
+        <body>
+            <center>
+            <form action ="" id="signinpage">
+                <h3>SIGN UP</h3>
+                <input type="text" placeholder="Enter your name...." required id="name">
+                <br><br>
+                <input type="email" placeholder="Enter your Email..." required id="email">
+                <br><br>
+                <input type="password" placeholder="Enter your password.." required id="pswrd">
+                <br><br>
+                <button type="submit">Sign in</button>
+                <br><br>
+                <p>Already have an account ?
+                    <a href="./login.html">Login here</a></p>
+            </center>
+            <script>
+                let allsignins=JSON.parse(localStorage.getItem("allsignins"))||[]
+                const name=document.getElementById("name")
+                const mail=document.getElementById("email")
+                const pswrd=document.getElementById("pswrd")
+                const signinbtn=document.getElementById("signinpage")
+                signinbtn.addEventListener("submit",(e)=>{
+                    e.preventDefault()
+                    let namevalue=name.value.trim()
+                    let mailvalue=mail.value.trim()
+                    let pswrdvalue=pswrd.value.trim()
+
+                let signupdetails={
+                    name:namevalue,
+                    mail:mailvalue,
+                    password:pswrdvalue,
+                }
+                allsignins.push(signupdetails)
+                localStorage.setItem("newuser",JSON.stringify(allsignins));
+                window.location.href="login.html"
+                })
+            </script>
+        </body>
+</html>

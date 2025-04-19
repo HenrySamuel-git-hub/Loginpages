@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./style.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="" id="loginpage">
+            <h3>LOGIN HERE</h3>
+            <input type="email" placeholder="Enter Your Mail..." required id="loginmail">
+            <input type="password" placeholder="Enter your Password..." required id="loginpswrd">
+            <button type="submit">Login In</button>
+        </form>
+        <script>
+            const exmail=document.getElementById("loginmail")
+            const expswrd=document.getElementById("loginpswrd")
+            const page=document.getElementById("loginpage")
+            page.addEventListener("submit",(e)=>{
+                e.preventDefault()
+                let m=exmail.value.trim()
+                let p=expswrd.value.trim()
+                console.log(m,p)
+                const newuser=JSON.parse(localStorage.getItem("newuser"));
+                console.log(newuser,"loginpage")
+                const userfound=newuser.find((x)=>x.mail===m && x.password===p)
+                console.log(userfound)
+                if(userfound){
+                    localStorage.setItem("loggedinuser",JSON.stringify(userfound))
+                    window.location.href="dashboard.html"
+                }else{
+                    alert("USER NOT FOUND!! TRY AGAIN!")
+                }
+            })
+
+        </script>
+    </body>
+</html>
